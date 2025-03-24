@@ -73,7 +73,17 @@ RUN git clone https://github.com/zsh-users/zsh-autosuggestions ~/.oh-my-zsh/cust
 # Crear el directorio de trabajo si no existe
 RUN mkdir -p /home/student/ros2_ws && chown student:student /home/student/ros2_ws
 
+RUN echo 'source /opt/ros/humble/setup.zsh' >> /home/$USER_NAME/.zshrc
+RUN echo 'cat << "EOF"' >> /home/$USER_NAME/.zshrc && \
+    echo '' >> /home/$USER_NAME/.zshrc && \
+    echo ' 🤖¡Bienvenid@s a las Prácticas de Ampliación de Robótica! 🤖' >> /home/$USER_NAME/.zshrc && \
+    echo '⚙️ Aquí vamos a jugar con **ROS2**, **Kalman**, **partículas** y quizá... destruir algún dron en simulación.' >> /home/$USER_NAME/.zshrc && \
+    echo '💡 Si algo explota, fingimos que fue a propósito.' >> /home/$USER_NAME/.zshrc && \
+    echo '🚀 Recuerda: en robótica, si funciona a la primera... sospecha.' >> /home/$USER_NAME/.zshrc && \
+    echo '' >> /home/$USER_NAME/.zshrc && \
+    echo 'Cualquier duda al del moño jeje' >> /home/$USER_NAME/.zshrc && \
+    echo 'EOF' >> /home/$USER_NAME/.zshrc
+# start zsh
+CMD [ "zsh" ]
 
-# Iniciar Zsh al entrar en el contenedor
-CMD ["zsh"]
 
